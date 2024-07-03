@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
 <meta charset="utf-8">
-<title>NHÓM 19 TRAVELER</title>
+<title>TRAVELER - Free Travel Website Template</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="Free HTML Templates" name="keywords">
 <meta content="Free HTML Templates" name="description">
 
 <!-- Favicon -->
-<link href="public/img/favicon.ico" rel="icon">
+<link href="img/favicon.ico" rel="icon">
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,19 +23,22 @@
 	rel="stylesheet">
 
 <!-- Libraries Stylesheet -->
-<link href="public/lib/owlcarousel/assets/owl.carousel.min.css"
+<link href="../public/lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
 <link
-	href="public/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+	href="../public/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
 	rel="stylesheet" />
 
 <!-- Customized Bootstrap Stylesheet -->
-<link href="public/css/style.css" rel="stylesheet">
+<link href="../public/css/style.css" rel="stylesheet">
+	<style>
+		#setImage img {
+			width: 100%;
+		}
+	</style>
 </head>
 
 <body>
-
-
 	<!-- Topbar Start -->
 	<div class="container-fluid bg-light pt-3 d-none d-lg-block">
 		<div class="container">
@@ -94,52 +97,108 @@
 							href="/tour/trong-nuoc" class="nav-item nav-link">Tour trong
 							nước</a> <a href="/tour/ngoai-nuoc" class="nav-item nav-link">Tour
 							ngoài nước</a> <a href="/tin-tuc" class="nav-item nav-link">Tin
-							tức</a> <a href="/about" class="nav-item nav-link">Về chúng tôi</a> <a
+							tức</a> <a href="/about" class="nav-item nav-link">Về chúng tôi</a>
+						<a
 							href="/account" class="nav-item nav-link">Tài khoản</a>
 					</div>
 				</div>
 			</nav>
 		</div>
 	</div>
+	<!-- Navbar End -->
 
-	<!-- Contact Start -->
-	<div class="container-fluid py-5">
-		<div class="container py-5">
-			<div class="text-center mb-3 pb-3">
-				<h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Login</h6>
-				<h1>Đăng nhập tài khoản của bạn</h1>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-lg-8">
-					<div class="contact-form bg-white" style="padding: 30px;">
-						<div id="help-block text-danger" style="color:red;" th:if="${err != null}">[[${err}]]</div>
-						<div id="help-block text-succces" style="color:green;" th:if="${message != null}">[[${message}]]</div>
-						<form name="sentMessage" action="/login" method="POST"   id="contactForm" novalidate="novalidate">
-							<div class="control-group">
-								<h5 class="control-group-heading py-2">Tên đăng nhập:</h5>
-								<input type="text" class="form-control p-4" id="subject"
-									placeholder="Tên đăng nhập" required name="username"/>
-								<p class="help-block text-danger"></p>
-							</div>
-							<div class="control-group">
-								<h5 class="control-group-heading py-2">Mật khẩu:</h5>
-								<input type="password" name="password" class="form-control p-4" id="subject" placeholder="Mật khẩu" required />
-								<p class="help-block text-danger"></p>
-							</div>
-							<div class="text-center">
-								<button class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton">Đăng nhập</button>
-							</div>
-						</form>
-						<a href="/register" class="pt-4">Chưa có tài khoản click vào đây để đăng ký</a>
-					</div>
+
+	<!-- Header Start -->
+	<div class="container-fluid page-header">
+		<div class="container">
+			<div
+				class="d-flex flex-column align-items-center justify-content-center"
+				style="min-height: 400px">
+				<h3 class="display-4 text-white text-uppercase">Thông tin chi
+					tiết tour</h3>
+				<div class="d-inline-flex text-white">
+					<p class="m-0 text-uppercase">
+						<a class="text-white" href="">Trang chủ</a>
+					</p>
+					<i class="fa fa-angle-double-right pt-1 px-3"></i>
+					<p class="m-0 text-uppercase">Chi tiết tour</p>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- Header End -->
+
+	<!-- Blog Start -->
+	<div class="container-fluid py-5">
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-lg-8">
+					<!-- Blog Detail Start -->
+					<div class="pb-3">
+						<div class="blog-item">
+							<div id="header-carousel" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner">
+									<div th:each="image, iterStat : ${imageList}" class="carousel-item" th:classappend="${iterStat.index == 0} ? 'active' : ''">
+										<img class="w-100" style="height: 420px" th:src="'/public/img/' + ${image.url}" alt="Image">
+									</div>
+								</div>
+								<a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+									<div class="btn btn-dark" style="width: 45px; height: 45px;">
+										<span class="carousel-control-prev-icon mb-n2"></span>
+									</div>
+								</a>
+								<a class="carousel-control-next" href="#header-carousel" data-slide="next">
+									<div class="btn btn-dark" style="width: 45px; height: 45px;">
+										<span class="carousel-control-next-icon mb-n2"></span>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="bg-white mb-3" style="padding: 30px;">
+							<div class="d-flex mb-3">
+								<a class="text-primary text-uppercase text-decoration-none"
+									href="">Tour</a> <span class="text-primary px-2">|</span> <a
+									class="text-primary text-uppercase text-decoration-none"
+									href="">Tours Detail</a>
+							</div>
+							<div class="container" id="setImage" th:utext="${tour.noi_dung_tour}"></div>
+						</div>
+					</div>
+					<!-- Blog Detail End -->
+				</div>
+
+				<div class="col-lg-4 mt-5 mt-lg-0">
+					<!-- Author Bio -->
+					<form  th:action="@{/tour/booking/{id}(id=${tour.id})}" method="GET" class="d-flex flex-column text-center bg-white mb-5 py-5 px-4">
+						<img th:src="'/public/img/' + ${tour.anh_tour}" class="img-fluid mx-auto mb-3"
+							style="width: 100px;">
+						<h3 class="text-primary mb-3" th:text="${tour.ten_tour}"></h3>
+						<p th:text="${tour.gioi_thieu_tour}">Conset elitr erat vero
+							dolor ipsum et diam, eos dolor lorem, ipsum sit no ut est ipsum
+							erat kasd amet elitr</p>
+						<h4 class="text-danger mb-3">Lịch khởi hành và giá</h4>
+						<select class="custom-select px-4" name="ngay_khoi_hanh" style="height: 47px;">
+							<option th:each="date : ${listDate}" th:value="${date.getNgay_khoi_hanh()}"
+								th:text="${#dates.format(date.ngay_khoi_hanh, 'dd-MM-yyyy')}">Chọn
+								ngày khởi hành</option>
+						</select>
+						<input type="hidden" name="tong_tien" id="input_tong_tien" value="">
+						<h5 class="text-danger mt-4" th:attr="data-price=${tour.gia_tour}" id="gia_tour" th:inline="text">Giá : [[${#numbers.formatInteger(tour.gia_tour,3,'POINT')}]] VNĐ / người</h5>
+						<input type="number" value="1" class="form-control p-4" id="so_nguoi" name="so_nguoi"
+							placeholder="Nhập số người" />
+						<h5 class="text-danger mt-4 mb-2" id="tong_tien">Tông tiền : 15.000.000 đ</h5>
+						<button type="submit" class="btn btn-primary py-md-3 px-md-5 mt-2">Đặt tour ngay</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Blog End -->
 
 
 	<!-- Footer Start -->
-	<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+	<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5"
+		style="margin-top: 90px;">
 		<div class="row pt-5">
 			<div class="col-lg-4 col-md-6 mb-5">
 				<a href="" class="navbar-brand">
@@ -241,8 +300,9 @@
 
 
 	<!-- JavaScript Libraries -->
-	<script src="/public/js/boostrap-bundle.min.js"></script>
-	<script src="/public/js/jquery.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 	<script src="public/lib/easing/easing.min.js"></script>
 	<script src="public/lib/owlcarousel/owl.carousel.min.js"></script>
 	<script src="public/lib/tempusdominus/js/moment.min.js"></script>
@@ -252,12 +312,24 @@
 
 	<!-- Contact Javascript File -->
 	<script src="public/mail/jqBootstrapValidation.min.js"></script>
-	<!--<script src="public/mail/contact.js"></script>-->
+	<script src="public/mail/contact.js"></script>
 
 	<!-- Template Javascript -->
 	<script src="public/js/main.js"></script>
 	<script type="text/javascript">
-		
+		window.onload = function () {
+			let so_nguoi = Number(document.getElementById("so_nguoi").value);
+			let gia_tien = Number(document.getElementById("gia_tour").dataset.price);
+			document.getElementById("input_tong_tien").value = so_nguoi * gia_tien;
+			document.getElementById("tong_tien").innerHTML = 'Tổng tiền: '+(so_nguoi * gia_tien).toLocaleString() + ' VNĐ'
+		}
+
+		document.getElementById("so_nguoi").onchange = function () {
+			let so_nguoi = Number(document.getElementById("so_nguoi").value);
+			let gia_tien = Number(document.getElementById("gia_tour").dataset.price);
+			document.getElementById("input_tong_tien").value = so_nguoi * gia_tien;
+			document.getElementById("tong_tien").innerHTML = 'Tổng tiền: '+(so_nguoi * gia_tien).toLocaleString() + ' VNĐ'
+		}
 	</script>
 </body>
 

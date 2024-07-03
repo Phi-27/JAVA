@@ -94,7 +94,7 @@
 							href="/tour/trong-nuoc" class="nav-item nav-link">Tour trong
 							nước</a> <a href="/tour/ngoai-nuoc" class="nav-item nav-link">Tour
 							ngoài nước</a> <a href="/tin-tuc" class="nav-item nav-link">Tin
-							tức</a> <a href="/about" class="nav-item nav-link">Về chúng tôi</a> <a
+							tức</a> <a href="/lien-he" class="nav-item nav-link">Liên hệ</a> <a
 							href="/account" class="nav-item nav-link">Tài khoản</a>
 					</div>
 				</div>
@@ -106,40 +106,91 @@
 	<div class="container-fluid py-5">
 		<div class="container py-5">
 			<div class="text-center mb-3 pb-3">
-				<h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Login</h6>
-				<h1>Đăng nhập tài khoản của bạn</h1>
+				<h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Đăng
+					kí</h6>
+				<h1>Đăng kí tài khoản người dùng</h1>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-lg-8">
 					<div class="contact-form bg-white" style="padding: 30px;">
 						<div id="help-block text-danger" style="color:red;" th:if="${err != null}">[[${err}]]</div>
-						<div id="help-block text-succces" style="color:green;" th:if="${message != null}">[[${message}]]</div>
-						<form name="sentMessage" action="/login" method="POST"   id="contactForm" novalidate="novalidate">
-							<div class="control-group">
-								<h5 class="control-group-heading py-2">Tên đăng nhập:</h5>
-								<input type="text" class="form-control p-4" id="subject"
-									placeholder="Tên đăng nhập" required name="username"/>
-								<p class="help-block text-danger"></p>
+						<div id="help-block text-danger" style="color:green;" th:if="${message != null}">[[${message}]]</div>
+						<form name="sentMessage" method="post" action="/register" id="contactForm" novalidate="novalidate">
+							<div class="form-row">
+								<div class="control-group col-sm-6">
+									<input type="text" class="form-control p-4" id="name"
+										name="username" placeholder="Tên người dùng"
+										required="required"
+										data-validation-required-message="Vui lòng nhập tên người dùng" />
+									<p class="help-block text-danger"></p>
+								</div>
+								<div class="control-group col-sm-6">
+									<input type="text" class="form-control p-4" name="ho_ten"
+										id="email" placeholder="Họ tên" required="required"
+										data-validation-required-message="Vui lòng nhập họ và tên" />
+									<p class="help-block text-danger"></p>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="control-group col-sm-6">
+									<input type="password" class="form-control p-4" id="name"
+										name="password" placeholder="Mật khẩu" required="required"
+										data-validation-required-message="Vui lòng nhập mật khẩu" />
+									<p class="help-block text-danger"></p>
+								</div>
+								<div class="control-group col-sm-6">
+									<input type="password" class="form-control p-4"
+										name="repassword" id="email" placeholder="Mật khẩu"
+										required="required"
+										data-validation-required-message="Vui lòng nhập lại mật khẩu" />
+									<p class="help-block text-danger"></p>
+								</div>
 							</div>
 							<div class="control-group">
-								<h5 class="control-group-heading py-2">Mật khẩu:</h5>
-								<input type="password" name="password" class="form-control p-4" id="subject" placeholder="Mật khẩu" required />
+								<input type="email" class="form-control p-4" name="email"
+									id="subject" placeholder="Email" required="required"
+									data-validation-required-message="Vui lòng nhập email" />
+								<p class="help-block text-danger"></p>
+							</div>
+							<div class="form-row">
+								<div class="control-group col-sm-6">
+									<input type="tel" class="form-control p-4" id="name" name="sdt"
+										placeholder="Số điện thoại" required="required"
+										data-validation-required-message="Vui lòng nhập số điện thoại" />
+									<p class="help-block text-danger"></p>
+								</div>
+								<div class="control-group col-sm-6">
+									<div class="mb-3 mb-md-0">
+										<select class="custom-select px-4" name="gioi_tinh"
+											style="height: 47px;">
+											<option selected value="Nam">Nam</option>
+											<option value="Nữ">Nữ</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="control-group">
+								<input type="text" class="form-control p-4" name="dia_chi"
+									id="subject" placeholder="Địa chỉ" required="required"
+									data-validation-required-message="Vui lòng nhập địa chỉ" />
 								<p class="help-block text-danger"></p>
 							</div>
 							<div class="text-center">
-								<button class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton">Đăng nhập</button>
+								<button class="btn btn-primary py-3 px-4" type="submit"
+									id="sendMessageButton">Đăng ký tài khoản</button>
 							</div>
 						</form>
-						<a href="/register" class="pt-4">Chưa có tài khoản click vào đây để đăng ký</a>
+						<a href="/login" class="pt-4">Đăng nhập</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<!-- Contact End -->
 
 	<!-- Footer Start -->
-	<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+	<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5"
+		style="margin-top: 90px;">
 		<div class="row pt-5">
 			<div class="col-lg-4 col-md-6 mb-5">
 				<a href="" class="navbar-brand">
@@ -252,7 +303,6 @@
 
 	<!-- Contact Javascript File -->
 	<script src="public/mail/jqBootstrapValidation.min.js"></script>
-	<!--<script src="public/mail/contact.js"></script>-->
 
 	<!-- Template Javascript -->
 	<script src="public/js/main.js"></script>
